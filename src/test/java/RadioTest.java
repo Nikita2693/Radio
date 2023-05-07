@@ -195,7 +195,7 @@ import org.junit.jupiter.api.Test;
         @Test
         public void lowSoundVolumeAboveMax() {
             Radio volume = new Radio();
-            volume.setCurrentSoundVolume(11);
+            volume.setCurrentSoundVolume(101);
             volume.lowSoundVolume();
             int expected = 0;
             int actual = volume.getCurrentSoundVolume();
@@ -239,9 +239,9 @@ import org.junit.jupiter.api.Test;
         @Test
         public void increaseSoundVolumeMax() {
             Radio volume = new Radio();
-            volume.setCurrentSoundVolume(10);
+            volume.setCurrentSoundVolume(100);
             volume.increaseSoundVolume();
-            int expected = 10;
+            int expected = 100;
             int actual = volume.getCurrentSoundVolume();
             Assertions.assertEquals(expected, actual);
 
@@ -261,9 +261,9 @@ import org.junit.jupiter.api.Test;
         @Test
         public void increaseSoundVolumeAboveMax() {
             Radio volume = new Radio();
-            volume.setCurrentSoundVolume(10);
+            volume.setCurrentSoundVolume(100);
             volume.increaseSoundVolume();
-            int expected = 10;
+            int expected = 100;
             int actual = volume.getCurrentSoundVolume();
             Assertions.assertEquals(expected, actual);
 
@@ -300,5 +300,22 @@ import org.junit.jupiter.api.Test;
             int actual = volume.getCurrentSoundVolume();
             Assertions.assertEquals(expected, actual);
         }
-    }
 
+        @Test
+        public void setCountRadioStation() {
+            int countStation = 15;
+            Radio radio = new Radio(countStation);
+
+            int expected = radio.getMaxRadioStation();
+            Assertions.assertEquals(expected, countStation -1 );
+        }
+
+        @Test
+        public void notSetCountRadioStation() {
+            Radio radio = new Radio();
+
+            int expected = radio.getMaxRadioStation();
+            Assertions.assertEquals(expected,  9 );
+        }
+
+    }
